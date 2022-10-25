@@ -1,10 +1,11 @@
 package controller;
 
+import model.PayingMoney;
 import view.InputView;
 
 public class LottoController {
 
     public static void run() {
-        InputView.requestPayingMoney()
+        PayingMoney payingMoney = InputView.requestPayingMoney();
     }
 }
