@@ -15,6 +15,10 @@ public class PayingMoney {
         money = Integer.parseInt(Utils.deleteAllSpace(input));
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     private void validatePayingMoney(String input) {
         if (!Pattern.matches(PAYING_MONEY_REGEX, input)) {
             throw new IllegalArgumentException();

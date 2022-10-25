@@ -1,4 +1,4 @@
-package domain;
+package model;
 
 import java.util.List;
 
@@ -8,6 +8,10 @@ import java.util.List;
 public class Lotto {
 
     private final List<Integer> numbers;
+
+    public Lotto() {
+        numbers = null;
+    }
 
     public Lotto(List<Integer> numbers) {
         this.numbers = numbers;

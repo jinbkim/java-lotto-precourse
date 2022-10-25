@@ -1,5 +1,7 @@
 package domain;
 
+import model.Lotto;
+
 /**
  * 당첨 번호를 담당하는 객체
  */
