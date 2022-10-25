@@ -9,5 +9,7 @@ public class LottoController {
     public static void run() {
         PayingMoney payingMoney = InputView.requestPayingMoney();
         LottoList lottoList = new LottoList(payingMoney.getMoney());
+
+        System.out.println(lottoList);
     }
 }
