@@ -12,14 +12,9 @@ public class LottoController {
     public static void run() {
         PayingMoney payingMoney = InputView.requestPayingMoney();
         LottoList lottoList = new LottoList(payingMoney.getMoney());
-
-        System.out.println(lottoList);
-
         WinningLotto winningLotto = InputView.requestWinningLotto();
-        LottoResult lottoResult = new LottoResult();
+        LottoResult lottoResult = new LottoResult(lottoList.get(), winningLotto);
 
-        lottoList.get()
-            .forEach(lotto -> lottoResult.add(winningLotto.match(lotto)));
         OutputView.printResult(payingMoney.getMoney(), lottoResult);
     }
 }

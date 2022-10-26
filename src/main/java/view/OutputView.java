@@ -21,7 +21,6 @@ public class OutputView {
     private static final String COUNT = "개";
     private static final String[] TOTAL_YIELD = {"총 수익은 ", "입니다."};
 
-
     public static void printRequestPayingMoney() {
         System.out.println(REQUEST_PAYING_MONEY);
     }

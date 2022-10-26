@@ -7,8 +7,8 @@ public class LottoResult {
 
     private List<Rank> result = new ArrayList<>();
 
-    public void add(Rank rank) {
-        result.add(rank);
+    public LottoResult(List<Lotto> lottoList, WinningLotto winningLotto) {
+        lottoList.forEach(lotto -> result.add(winningLotto.match(lotto)));
     }
 
     public int countResult(Rank baseRank) {
@@ -18,8 +18,6 @@ public class LottoResult {
     }
 
     public int winnings() {
-        int money = 0;
-
         return result.stream()
             .map(Rank::getWinningMoney)
             .reduce((money1, money2) -> money1 + money2)

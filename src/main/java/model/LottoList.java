@@ -19,6 +19,7 @@ public class LottoList {
         OutputView.printBuyLotto(lottoCount);
         IntStream.range(0, lottoCount)
             .forEach(i -> lottoList.add(new Lotto()));
+        System.out.println(this);
     }
 
     @Override
