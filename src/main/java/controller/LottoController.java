@@ -2,6 +2,7 @@ package controller;
 
 import model.LottoList;
 import model.PayingMoney;
+import model.WinningLotto;
 import view.InputView;
 
 public class LottoController {
@@ -12,6 +13,6 @@ public class LottoController {
 
         System.out.println(lottoList);
 
-        InputView.requestWinningLotto()
+        WinningLotto winningLotto = InputView.requestWinningLotto();
     }
 }

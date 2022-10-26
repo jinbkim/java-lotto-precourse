@@ -29,7 +29,12 @@ public class InputView {
 
     private static Lotto requestPastWinningLotto() {
         OutputView.printRequestWinningLotto();
-        return new Lotto(scanner.nextLine());
+        try {
+            return new Lotto(scanner.nextLine());
+        } catch (IllegalArgumentException e) {
+            OutputView.printWrongWinningLotto();
+            return requestPastWinningLotto();
+        }
     }
 
     private static int requestBonusNum() {
