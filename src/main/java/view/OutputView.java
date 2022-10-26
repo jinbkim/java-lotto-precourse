@@ -56,7 +56,7 @@ public class OutputView {
         System.out.println(FIVE_MATCH + lottoResult.countResult(Rank.THIRD) + COUNT);
         System.out.println(FIVE_MATCH_WITH_BONUS + lottoResult.countResult(Rank.SECOND) + COUNT);
         System.out.println(SIX_MATCH + lottoResult.countResult(Rank.FIRST) + COUNT);
-        System.out.println(TOTAL_YIELD[0] + lottoResult.winnings() / payingMoney + TOTAL_YIELD[1]);
+        System.out.println(TOTAL_YIELD[0] + lottoResult.computeWinnings() / payingMoney + TOTAL_YIELD[1]);
     }
 
 }

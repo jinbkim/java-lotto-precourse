@@ -39,7 +39,7 @@ public class Lotto {
         validateLottoNum();
     }
 
-    public int matchCount(List<Integer> targetNums) {
+    public int countMatch(List<Integer> targetNums) {
         return (int) targetNums.stream()
             .filter(targetNum -> isMatch(targetNum))
             .count();

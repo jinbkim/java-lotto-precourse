@@ -17,7 +17,7 @@ public class LottoResult {
             .count();
     }
 
-    public int winnings() {
+    public int computeWinnings() {
         return result.stream()
             .map(Rank::getWinningMoney)
             .reduce((money1, money2) -> money1 + money2)
