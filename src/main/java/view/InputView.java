@@ -1,6 +1,7 @@
 package view;
 
 import java.util.Scanner;
+import model.BonusBall;
 import model.Lotto;
 import model.PayingMoney;
 import model.WinningLotto;
@@ -15,13 +16,19 @@ public class InputView {
     }
 
     public static WinningLotto requestWinningLotto() {
-        requestWinningNum();
+        Lotto winningLotto = requestWinningNum();
+        BonusBall bonusBall = requestBonusBall();
 
-        return null;
+        return new WinningLotto(winningLotto, bonusBall.getBonusBall());
     }
 
     private static Lotto requestWinningNum() {
         OutputView.printRequestWinningNum();
         return new Lotto(scanner.nextLine());
+    }
+
+    private static BonusBall requestBonusBall() {
+        OutputView.printRequestBonusBall();
+        return new BonusBall(scanner.nextLine());
     }
 }
