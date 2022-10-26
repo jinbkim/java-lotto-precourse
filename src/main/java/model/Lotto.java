@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import utils.Utils;
@@ -16,13 +17,22 @@ public class Lotto {
     private static final String LEFT_BRACKET = "[";
     private static final String RIGHT_BRACKET = "]";
     private static final String NUM_JOIN_DELIMITER = ", ";
+    private static final String NUM_SPLIT_DELIMITER = ",";
 
-    private final List<Integer> numbers = new ArrayList<>();
+    private final List<Integer> numbers;
 
     public Lotto() {
+        numbers = new ArrayList<>();
         while (numbers.size() <= LOTTO_SIZE) {
             addNum();
         }
+    }
+
+    public Lotto(String input) {
+        input = Utils.deleteAllSpace(input);
+        numbers = Arrays.stream(input.split(NUM_SPLIT_DELIMITER))
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
     }
 
     private void addNum() {
@@ -40,5 +50,9 @@ public class Lotto {
             .collect(Collectors.joining(NUM_JOIN_DELIMITER));
 
         return LEFT_BRACKET + numStr + RIGHT_BRACKET;
+    }
+
+    public List<Integer> get() {
+        return numbers;
     }
 }
