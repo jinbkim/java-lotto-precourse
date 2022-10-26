@@ -1,4 +1,4 @@
-package domain;
+package model;
 
 /**
  * 로또 등수를 의미하는 enum
@@ -28,6 +28,10 @@ public enum Rank {
 
         if (SECOND.matchCount(countOfMatch) && matchBonus) {
             return SECOND;
+        }
+
+        if (THIRD.matchCount(countOfMatch)) {
+            return THIRD;
         }
 
         for (Rank rank : values()) {

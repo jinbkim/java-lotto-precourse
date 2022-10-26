@@ -27,4 +27,8 @@ public class LottoList {
             .map(Lotto::toString)
             .collect(Collectors.joining(LOTTO_LIST_DELIMITER));
     }
+
+    public List<Lotto> get() {
+        return lottoList;
+    }
 }

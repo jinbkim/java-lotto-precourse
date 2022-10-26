@@ -43,6 +43,23 @@ public class Lotto {
         validateLottoNum(numbers);
     }
 
+    public int matchCount(List<Integer> targetNums) {
+        int winNumCount = 0;
+
+        for (int winNum : targetNums) {
+            if (isMatch(winNum)) {
+                winNumCount++;
+            }
+        }
+        return winNumCount;
+    }
+
+    public boolean isMatch(int targetNum) {
+        return numbers.stream()
+            .filter(num -> num == targetNum)
+            .count() > 0;
+    }
+
     @Override
     public String toString() {
         return LEFT_BRACKET + numbers.stream()
@@ -62,6 +79,10 @@ public class Lotto {
                 throw new IllegalArgumentException();
             }
         });
+    }
+
+    public List<Integer> get() {
+        return numbers;
     }
 
 }

@@ -1,12 +1,9 @@
 package model;
 
-import domain.Rank;
-
 /**
  * 당첨 번호를 담당하는 객체
  */
 public class WinningLotto {
-
 
     private final Lotto lotto;
     private final int bonusNo;
@@ -17,7 +14,6 @@ public class WinningLotto {
     }
 
     public Rank match(Lotto userLotto) {
-        // TODO 로직 구현
-        return null;
+        return Rank.valueOf(lotto.matchCount(userLotto.get()), lotto.isMatch(bonusNo));
     }
 }

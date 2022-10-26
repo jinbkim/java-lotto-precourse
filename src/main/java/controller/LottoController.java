@@ -1,6 +1,7 @@
 package controller;
 
 import model.LottoList;
+import model.LottoResult;
 import model.PayingMoney;
 import model.WinningLotto;
 import view.InputView;
@@ -14,5 +15,9 @@ public class LottoController {
         System.out.println(lottoList);
 
         WinningLotto winningLotto = InputView.requestWinningLotto();
+        LottoResult lottoResult = new LottoResult();
+
+        lottoList.get()
+            .forEach(lotto -> lottoResult.add(winningLotto.match(lotto)));
     }
 }
