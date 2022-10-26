@@ -11,9 +11,9 @@ public class BonusNum {
 
     private final int num;
 
-    public BonusNum(String input) {
+    public BonusNum(Lotto pastWinningLotto, String input) {
         input = Utils.deleteAllSpace(input);
-        validateBonusNum(input);
+        validateBonusNum(pastWinningLotto, input);
         this.num = Integer.parseInt(input);
     }
 
@@ -21,11 +21,14 @@ public class BonusNum {
         return num;
     }
 
-    private void validateBonusNum(String input) {
+    private void validateBonusNum(Lotto pastWinningLotto, String input) {
         if (!Pattern.matches(NUM_REGEX, input)) {
             throw new IllegalArgumentException();
         }
         if (Integer.parseInt(input) < LOTTO_NUM_MIN || Integer.parseInt(input) > LOTTO_NUM_MAX) {
+            throw new IllegalArgumentException();
+        }
+        if (pastWinningLotto.isMatch(Integer.parseInt(input))) {
             throw new IllegalArgumentException();
         }
     }

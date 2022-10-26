@@ -22,7 +22,7 @@ public class InputView {
 
     public static WinningLotto requestWinningLotto() {
         Lotto pastWinningLotto = requestPastWinningLotto();
-        BonusNum bonusNum = requestBonusNum();
+        BonusNum bonusNum = requestBonusNum(pastWinningLotto);
 
         return new WinningLotto(pastWinningLotto, bonusNum.getNum());
     }
@@ -37,13 +37,13 @@ public class InputView {
         }
     }
 
-    private static BonusNum requestBonusNum() {
+    private static BonusNum requestBonusNum(Lotto pastWinningLotto) {
         OutputView.printRequestBonusBall();
         try {
-            return new BonusNum(scanner.nextLine());
+            return new BonusNum(pastWinningLotto, scanner.nextLine());
         } catch (IllegalArgumentException e) {
             OutputView.printWrongBonusBall();
-            return requestBonusNum();
+            return requestBonusNum(pastWinningLotto);
         }
     }
 
