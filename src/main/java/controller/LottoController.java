@@ -5,6 +5,7 @@ import model.LottoResult;
 import model.PayingMoney;
 import model.WinningLotto;
 import view.InputView;
+import view.OutputView;
 
 public class LottoController {
 
@@ -19,5 +20,6 @@ public class LottoController {
 
         lottoList.get()
             .forEach(lotto -> lottoResult.add(winningLotto.match(lotto)));
+        OutputView.printResult(lottoResult);
     }
 }

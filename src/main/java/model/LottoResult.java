@@ -11,4 +11,9 @@ public class LottoResult {
         result.add(rank);
     }
 
+    public int countResult(Rank baseRank) {
+        return (int) result.stream()
+            .filter(rank -> rank == baseRank)
+            .count();
+    }
 }

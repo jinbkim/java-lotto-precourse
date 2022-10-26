@@ -11,11 +11,11 @@ class WinningLottoTest {
         Lotto twoMatch = new Lotto("1, 2, 7, 8, 9, 10");
         Lotto threeMatch = new Lotto("1, 2, 3, 8, 9, 10");
         Lotto fourMatch = new Lotto("1, 2, 3, 4, 9, 10");
-        Lotto fiveMatch = new Lotto("1, 2, 3, 4, 5, 10");
+        Lotto fiveMatch = new Lotto("1, 2, 3, 4, 5, 11");
         Lotto sixMatch = new Lotto("1, 2, 3, 4, 5, 6");
 
         WinningLotto winningLottoBonus10 = new WinningLotto(answer, 10);
-        WinningLotto winningLottoBonus6 = new WinningLotto(answer, 6);
+        WinningLotto winningLottoBonus11 = new WinningLotto(answer, 11);
 
         Assertions.assertThat(winningLottoBonus10.match(twoMatch))
             .isEqualTo(Rank.MISS);
@@ -25,7 +25,7 @@ class WinningLottoTest {
             .isEqualTo(Rank.FOURTH);
         Assertions.assertThat(winningLottoBonus10.match(fiveMatch))
             .isEqualTo(Rank.THIRD);
-        Assertions.assertThat(winningLottoBonus6.match(fiveMatch))
+        Assertions.assertThat(winningLottoBonus11.match(fiveMatch))
             .isEqualTo(Rank.SECOND);
         Assertions.assertThat(winningLottoBonus10.match(sixMatch))
             .isEqualTo(Rank.FIRST);
