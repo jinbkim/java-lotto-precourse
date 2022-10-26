@@ -1,6 +1,7 @@
 package view;
 
 import java.util.Scanner;
+import model.BonusNum;
 import model.Lotto;
 import model.PayingMoney;
 import model.WinningLotto;
@@ -21,10 +22,9 @@ public class InputView {
 
     public static WinningLotto requestWinningLotto() {
         Lotto pastWinningLotto = requestPastWinningLotto();
-        int bonusNo = requestBonusNum();
+        BonusNum bonusNum = requestBonusNum();
 
-        return new WinningLotto(pastWinningLotto, bonusNo);
-
+        return new WinningLotto(pastWinningLotto, bonusNum.getNum());
     }
 
     private static Lotto requestPastWinningLotto() {
@@ -37,9 +37,14 @@ public class InputView {
         }
     }
 
-    private static int requestBonusNum() {
+    private static BonusNum requestBonusNum() {
         OutputView.printRequestBonusBall();
-        return Integer.parseInt(scanner.nextLine());
+        try {
+            return new BonusNum(scanner.nextLine());
+        } catch (IllegalArgumentException e) {
+            OutputView.printWrongBonusBall();
+            return requestBonusNum();
+        }
     }
 
 }
