@@ -26,11 +26,7 @@ public class Lotto {
     public Lotto() {
         numbers = new ArrayList<>();
         while (numbers.size() < LOTTO_NUM_SIZE) {
-            int randNum = Utils.createRandNum(LOTTO_NUM_MIN, LOTTO_NUM_MAX);
-
-            if (!numbers.contains(randNum)) {
-                numbers.add(randNum);
-            }
+            addNum();
         }
     }
 
@@ -44,14 +40,9 @@ public class Lotto {
     }
 
     public int matchCount(List<Integer> targetNums) {
-        int winNumCount = 0;
-
-        for (int winNum : targetNums) {
-            if (isMatch(winNum)) {
-                winNumCount++;
-            }
-        }
-        return winNumCount;
+        return (int) targetNums.stream()
+            .filter(targetNum -> isMatch(targetNum))
+            .count();
     }
 
     public boolean isMatch(int targetNum) {
@@ -83,6 +74,14 @@ public class Lotto {
 
         if (validLottoNumCount != LOTTO_NUM_SIZE || duplicateCheckedNumCount != LOTTO_NUM_SIZE) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void addNum() {
+        int randNum = Utils.createRandNum(LOTTO_NUM_MIN, LOTTO_NUM_MAX);
+
+        if (!numbers.contains(randNum)) {
+            numbers.add(randNum);
         }
     }
 
