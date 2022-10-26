@@ -7,8 +7,8 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static PayingMoney requestPayingMoney() {
-        OutputView.requestPayingMoney();
+    public static PayingMoney printRequestPayingMoney() {
+        OutputView.printRequestPayingMoney();
         return new PayingMoney(scanner.nextLine());
     }
 }

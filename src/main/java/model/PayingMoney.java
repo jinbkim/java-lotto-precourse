@@ -7,4 +7,8 @@ public class PayingMoney {
     public PayingMoney(String input) {
         money = Integer.parseInt(input);
     }
+
+    public int getMoney() {
+        return money;
+    }
 }
