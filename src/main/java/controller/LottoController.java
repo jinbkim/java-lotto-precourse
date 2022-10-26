@@ -11,5 +11,7 @@ public class LottoController {
         LottoList lottoList = new LottoList(payingMoney.getMoney());
 
         System.out.println(lottoList);
+
+        InputView.requestWinningLotto()
     }
 }

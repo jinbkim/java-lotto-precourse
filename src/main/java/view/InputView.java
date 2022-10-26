@@ -1,7 +1,9 @@
 package view;
 
 import java.util.Scanner;
+import model.Lotto;
 import model.PayingMoney;
+import model.WinningLotto;
 
 public class InputView {
 
@@ -16,4 +18,23 @@ public class InputView {
             return requestPayingMoney();
         }
     }
+
+    public static WinningLotto requestWinningLotto() {
+        Lotto pastWinningLotto = requestPastWinningLotto();
+        int bonusNo = requestBonusNum();
+
+        return new WinningLotto(pastWinningLotto, bonusNo);
+
+    }
+
+    private static Lotto requestPastWinningLotto() {
+        OutputView.printRequestWinningLotto();
+        return new Lotto(scanner.nextLine());
+    }
+
+    private static int requestBonusNum() {
+        OutputView.printRequestBonusBall();
+        return Integer.parseInt(scanner.nextLine());
+    }
+
 }

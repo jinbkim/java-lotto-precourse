@@ -2,6 +2,7 @@ package model;
 
 import Utils.Utils;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,10 +17,12 @@ public class Lotto {
     private static final String LEFT_BRACKET = "[";
     private static final String RIGHT_BRACKET = "]";
     private static final String LOTTO_NUM_DELIMITER = ", ";
+    private static final String LOTTO_NUM_SPLIT_REGEX = ",";
 
-    private final List<Integer> numbers = new ArrayList<>();
+    private final List<Integer> numbers;
 
     public Lotto() {
+        numbers = new ArrayList<>();
         while (numbers.size() < LOTTO_NUM_SIZE) {
             int randNum = Utils.createRandNum(LOTTO_NUM_MIN, LOTTO_NUM_MAX);
 
@@ -27,6 +30,12 @@ public class Lotto {
                 numbers.add(randNum);
             }
         }
+    }
+
+    public Lotto(String input) {
+        numbers = Arrays.stream(input.split(LOTTO_NUM_SPLIT_REGEX))
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
     }
 
     @Override
