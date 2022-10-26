@@ -20,6 +20,6 @@ public class LottoController {
 
         lottoList.get()
             .forEach(lotto -> lottoResult.add(winningLotto.match(lotto)));
-        OutputView.printResult(lottoResult);
+        OutputView.printResult(payingMoney.getMoney(), lottoResult);
     }
 }

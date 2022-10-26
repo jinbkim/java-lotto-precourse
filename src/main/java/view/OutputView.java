@@ -50,13 +50,14 @@ public class OutputView {
         System.out.println(WRONG_BONUS_BALL);
     }
 
-    public static void printResult(LottoResult lottoResult) {
+    public static void printResult(double payingMoney, LottoResult lottoResult) {
         System.out.println(STATISTICS);
         System.out.println(THREE_MATCH + lottoResult.countResult(Rank.FIFTH) + COUNT);
         System.out.println(FOUR_MATCH + lottoResult.countResult(Rank.FOURTH) + COUNT);
         System.out.println(FIVE_MATCH + lottoResult.countResult(Rank.THIRD) + COUNT);
         System.out.println(FIVE_MATCH_WITH_BONUS + lottoResult.countResult(Rank.SECOND) + COUNT);
         System.out.println(SIX_MATCH + lottoResult.countResult(Rank.FIRST) + COUNT);
+        System.out.println(TOTAL_YIELD[0] + lottoResult.winnings() / payingMoney + TOTAL_YIELD[1]);
     }
 
 }
