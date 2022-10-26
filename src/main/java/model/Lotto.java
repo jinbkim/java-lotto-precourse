@@ -35,6 +35,16 @@ public class Lotto {
             .collect(Collectors.toList());
     }
 
+    public int countMatch(Lotto lotto) {
+        return (int) numbers.stream()
+            .filter(num -> lotto.numbers.contains(num))
+            .count();
+    }
+
+    public boolean isMatch(int num) {
+        return numbers.contains(num);
+    }
+
     private void addNum() {
         int randNum = Utils.createRandNum(NUM_MIN, NUM_MAX);
 
