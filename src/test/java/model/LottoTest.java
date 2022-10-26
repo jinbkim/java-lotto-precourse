@@ -20,5 +20,6 @@ class LottoTest {
         Assertions.assertThatThrownBy(() -> new Lotto("46,2,3,4,5,6"));
         Assertions.assertThatThrownBy(() -> new Lotto("1,2,3,4,5,6,7"));
         Assertions.assertThatThrownBy(() -> new Lotto("1,2,3,4,,5,6"));
+        Assertions.assertThatThrownBy(() -> new Lotto("1,2,3,4,5,5"));
     }
 }

@@ -40,7 +40,7 @@ public class Lotto {
         numbers = Arrays.stream(input.split(LOTTO_NUM_SPLIT_REGEX))
             .map(Integer::parseInt)
             .collect(Collectors.toList());
-        validateLottoNum(numbers);
+        validateLottoNum();
     }
 
     public int matchCount(List<Integer> targetNums) {
@@ -73,12 +73,17 @@ public class Lotto {
         }
     }
 
-    private void validateLottoNum(List<Integer> numbers) {
-        numbers.forEach(num -> {
-            if (num < LOTTO_NUM_MIN || num > LOTTO_NUM_MAX) {
-                throw new IllegalArgumentException();
-            }
-        });
+    private void validateLottoNum() {
+        int validLottoNumCount = (int) numbers.stream()
+            .filter(num -> num >= LOTTO_NUM_MIN && num < +LOTTO_NUM_MAX)
+            .count();
+        int duplicateCheckedNumCount = (int) numbers.stream()
+            .distinct()
+            .count();
+
+        if (validLottoNumCount != LOTTO_NUM_SIZE || duplicateCheckedNumCount != LOTTO_NUM_SIZE) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public List<Integer> get() {
