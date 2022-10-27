@@ -9,7 +9,7 @@ public class OutputView {
     private static final String BUY_LOTTO = "개를 구매했습니다.";
     private static final String REQUEST_WINNING_NUM = "지난 주 당첨 번호를 입력해 주세요.";
     private static final String REQUEST_BONUS_BALL = "보너스 볼을 입력해 주세요.";
-    private static final String WINNING_STATS = "당첨 통계\n----------";
+    private static final String WINNING_STATS = "\n당첨 통계\n----------";
     private static final String THREE_MATCH = "3개 일치 (5000원) - ";
     private static final String FOUR_MATCH = "4개 일치 (50000원) - ";
     private static final String FIVE_MATCH = "5개 일치 (1500000원) - ";
@@ -26,11 +26,11 @@ public class OutputView {
     }
 
     public static void printBuyLotto(int lottoCount) {
-        System.out.println(lottoCount + BUY_LOTTO);
+        System.out.println("\n" + lottoCount + BUY_LOTTO);
     }
 
     public static void printRequestWinningNum() {
-        System.out.println(REQUEST_WINNING_NUM);
+        System.out.println("\n" + REQUEST_WINNING_NUM);
     }
 
     public static void printRequestBonusBall() {

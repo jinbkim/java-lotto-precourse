@@ -50,14 +50,14 @@ public class Lotto {
     }
 
     private void validateLottoNum() {
-        int invalidateNumCount = (int) numbers.stream()
+        boolean hasInvalidateNum = (int) numbers.stream()
             .filter(num -> num > NUM_MAX || num < NUM_MIN)
-            .count();
+            .count() != 0;
         boolean isDuplicated = numbers.stream()
             .distinct()
             .count() != LOTTO_SIZE;
 
-        if (invalidateNumCount > 0 || isDuplicated) {
+        if (hasInvalidateNum || isDuplicated) {
             throw new IllegalArgumentException();
         }
     }
