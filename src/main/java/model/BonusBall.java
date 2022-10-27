@@ -1,12 +1,10 @@
 package model;
 
 import java.util.List;
-import java.util.regex.Pattern;
 import utils.Utils;
 
 public class BonusBall {
 
-    private static final String ONLY_NUMBER = "^[0-9]*$";
     private static final int NUM_MIN = 1;
     private static final int NUM_MAX = 45;
 
@@ -29,7 +27,7 @@ public class BonusBall {
     }
 
     private void validateBonusBallForm(String input) {
-        if (!Pattern.matches(ONLY_NUMBER, input)) {
+        if (!Utils.isNumber(input)) {
             throw new IllegalArgumentException();
         }
     }
