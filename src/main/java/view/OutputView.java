@@ -16,6 +16,7 @@ public class OutputView {
     private static final String FIVE_AND_BONUS_BALL_MATCH = "5개 일치, 보너스 볼 일치 (30000000원) - ";
     private static final String SIX_MATCH = "6개 일치 (2000000000원) - ";
     private static final String COUNT = "개";
+    private static final String TOTAL_YIELD[] = {"총 수익률은 ", "입니다."};
 
     public static void printRequestPayingMoney() {
         System.out.println(REQUEST_PAYING_MONEY);
@@ -33,12 +34,13 @@ public class OutputView {
         System.out.println(REQUEST_BONUS_BALL);
     }
 
-    public static void printResult(LottoResult lottoResult) {
+    public static void printResult(LottoResult lottoResult, double payingMoney) {
         System.out.println(WINNING_STATS);
         System.out.println(THREE_MATCH + lottoResult.countRank(Rank.FIFTH) + COUNT);
         System.out.println(FOUR_MATCH + lottoResult.countRank(Rank.FOURTH) + COUNT);
         System.out.println(FIVE_MATCH + lottoResult.countRank(Rank.THIRD) + COUNT);
         System.out.println(FIVE_AND_BONUS_BALL_MATCH + lottoResult.countRank(Rank.SECOND) + COUNT);
         System.out.println(SIX_MATCH + lottoResult.countRank(Rank.FIRST) + COUNT);
+        System.out.println(TOTAL_YIELD[0] + lottoResult.computeWinnings() / payingMoney + TOTAL_YIELD[1]);
     }
 }

@@ -16,4 +16,11 @@ public class LottoResult {
             .filter(rank -> rank == baseRank)
             .count();
     }
+
+    public int computeWinnings() {
+        return ranks.stream()
+            .map(Rank::getWinningMoney)
+            .reduce((money1, money2) -> money1 + money2)
+            .get();
+    }
 }
