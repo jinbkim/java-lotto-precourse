@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 import model.BonusBall;
 import model.Lotto;
@@ -22,7 +23,7 @@ public class InputView {
 
     public static WinningLotto requestWinningLotto() {
         Lotto winningLotto = requestWinningNum();
-        BonusBall bonusBall = requestBonusBall();
+        BonusBall bonusBall = requestBonusBall(winningLotto.get());
 
         return new WinningLotto(winningLotto, bonusBall.getBonusBall());
     }
@@ -37,8 +38,13 @@ public class InputView {
         }
     }
 
-    private static BonusBall requestBonusBall() {
+    private static BonusBall requestBonusBall(List<Integer> winningNums) {
         OutputView.printRequestBonusBall();
-        return new BonusBall(scanner.nextLine());
+        try {
+            return new BonusBall(scanner.nextLine(), winningNums);
+        } catch (IllegalArgumentException e) {
+            OutputView.printWrongBonusBall();
+            return requestBonusBall(winningNums);
+        }
     }
 }

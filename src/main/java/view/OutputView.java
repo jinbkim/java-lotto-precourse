@@ -17,8 +17,9 @@ public class OutputView {
     private static final String SIX_MATCH = "6개 일치 (2000000000원) - ";
     private static final String COUNT = "개";
     private static final String TOTAL_YIELD[] = {"총 수익률은 ", "입니다."};
-    private static final String WRONG_PAYING_MONEY = "잘못된 구입금앱 입니다.";
-    private static final String WRONG_WINNING_NUM = "잘못된 당첨번호 입니다.";
+    private static final String WRONG_PAYING_MONEY = "잘못된 구입금액 형식 입니다.";
+    private static final String WRONG_WINNING_NUM = "잘못된 당첨번호 형식 입니다.";
+    private static final String WRONG_BONUS_BALL = "잘못된 보너스 볼 형식 입니다.";
 
     public static void printRequestPayingMoney() {
         System.out.println(REQUEST_PAYING_MONEY);
@@ -52,5 +53,9 @@ public class OutputView {
 
     public static void printWrongWinningNum() {
         System.out.println(WRONG_WINNING_NUM);
+    }
+
+    public static void printWrongBonusBall() {
+        System.out.println(WRONG_BONUS_BALL);
     }
 }
