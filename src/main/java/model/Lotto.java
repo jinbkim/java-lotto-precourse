@@ -23,7 +23,7 @@ public class Lotto {
 
     public Lotto() {
         numbers = new ArrayList<>();
-        while (numbers.size() <= LOTTO_SIZE) {
+        while (numbers.size() < LOTTO_SIZE) {
             addNum();
         }
     }

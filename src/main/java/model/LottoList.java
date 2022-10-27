@@ -16,7 +16,7 @@ public class LottoList {
     public LottoList(int payingMoney) {
         int lottoCount = payingMoney / LOTTO_PRICE;
 
-        IntStream.rangeClosed(0, lottoCount)
+        IntStream.range(0, lottoCount)
             .forEach(i -> lottoList.add(new Lotto()));
         OutputView.printBuyLotto(lottoCount);
         System.out.println(this);
@@ -27,5 +27,9 @@ public class LottoList {
         return lottoList.stream()
             .map(lotto -> lotto.toString())
             .collect(Collectors.joining(LOTTO_STRING_JOIN_DELIMITER));
+    }
+
+    public List<Lotto> get() {
+        return lottoList;
     }
 }
