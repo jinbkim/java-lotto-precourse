@@ -12,7 +12,12 @@ public class InputView {
 
     public static PayingMoney requestPayingMoney() {
         OutputView.printRequestPayingMoney();
-        return new PayingMoney(scanner.nextLine());
+        try {
+            return new PayingMoney(scanner.nextLine());
+        } catch (IllegalArgumentException e) {
+            OutputView.printWrongPayingMoney();
+            return requestPayingMoney();
+        }
     }
 
     public static WinningLotto requestWinningLotto() {
