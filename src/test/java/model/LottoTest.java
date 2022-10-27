@@ -15,4 +15,23 @@ class LottoTest {
         Assertions.assertThat(lotto2.get())
             .contains(1, 2, 3, 4, 5, 6);
     }
+
+    @Test
+    void 정상적인_당첨번호_입력받기() {
+        Assertions.assertThatCode(() -> new Lotto(" 1 , 2 , 3 , 4 , 5 , 6 "))
+            .doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> new Lotto("1,2,3,4,5,6"))
+            .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 비정상적인_당첨번호_입력받기() {
+        Assertions.assertThatThrownBy(() -> new Lotto("a,2,3,4,5,6"));
+        Assertions.assertThatThrownBy(() -> new Lotto("1,2a,3,4,5,6"));
+        Assertions.assertThatThrownBy(() -> new Lotto("1,2,0,4,5,6"));
+        Assertions.assertThatThrownBy(() -> new Lotto("1,2,3,46,5,6"));
+        Assertions.assertThatThrownBy(() -> new Lotto("1,2,3,4,4,6"));
+        Assertions.assertThatThrownBy(() -> new Lotto("1,2,3,,4,5,6"));
+        Assertions.assertThatThrownBy(() -> new Lotto("1,2,3,4,5,6,7"));
+    }
 }

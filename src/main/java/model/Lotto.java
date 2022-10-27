@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import utils.Utils;
 
@@ -18,6 +19,7 @@ public class Lotto {
     private static final String RIGHT_BRACKET = "]";
     private static final String NUM_JOIN_DELIMITER = ", ";
     private static final String NUM_SPLIT_DELIMITER = ",";
+    private static final String LOTTO_FORM_REGEX = "^[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]$";
 
     private final List<Integer> numbers;
 
@@ -30,9 +32,11 @@ public class Lotto {
 
     public Lotto(String input) {
         input = Utils.deleteAllSpace(input);
+        validateLottoForm(input);
         numbers = Arrays.stream(input.split(NUM_SPLIT_DELIMITER))
             .map(Integer::parseInt)
             .collect(Collectors.toList());
+        validateLottoNum();
     }
 
     public int countMatch(Lotto lotto) {
@@ -43,6 +47,25 @@ public class Lotto {
 
     public boolean isMatch(int num) {
         return numbers.contains(num);
+    }
+
+    private void validateLottoNum() {
+        int invalidateNumCount = (int) numbers.stream()
+            .filter(num -> num > NUM_MAX || num < NUM_MIN)
+            .count();
+        boolean isDuplicated = numbers.stream()
+            .distinct()
+            .count() != LOTTO_SIZE;
+
+        if (invalidateNumCount > 0 || isDuplicated) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateLottoForm(String input) {
+        if (!Pattern.matches(LOTTO_FORM_REGEX, input)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void addNum() {
